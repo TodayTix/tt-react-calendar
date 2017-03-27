@@ -1,0 +1,35 @@
+:root {
+  --day-width: calc((1/7) * 100%);
+}
+
+.tt-cal-dayHeaders {
+  display: flex;
+}
+
+.tt-cal-columnHeader,
+.tt-cal-dummyDay,
+.tt-cal-day {
+  flex: 0 0 var(--day-width);
+  width: var(--day-width);
+}
+
+.tt-cal-columnHeader {
+  text-align: center;
+}
+
+.tt-cal-week {
+  display: flex;
+
+  &:first-child {
+    justify-content: flex-end;
+  }
+
+  &:last-child {
+    /* NOTE(Jeremy):
+     * We have this declared after the :first-child styles because if there's
+     * only one row, we insert dummyDay divs at the beginning of the row to get
+     * the alignment correct, which means the days need to be left-aligned.
+     */
+    justify-content: flex-start;
+  }
+}
