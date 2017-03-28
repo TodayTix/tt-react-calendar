@@ -3,15 +3,8 @@ const compact = require('lodash/compact');
 const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 
-const fs = require('fs');
-
 const REPO_ROOT = __dirname;
 const ASSETS_PATH = path.resolve(REPO_ROOT, 'dist');
-
-const babelrc = JSON.parse(fs.readFileSync(path.resolve(
-  __dirname,
-  '.babelrc'
-), 'utf8'));
 
 module.exports = (env) => ({
   entry: './src/index.js',
@@ -27,18 +20,6 @@ module.exports = (env) => ({
       commonjs2: 'react',
       amd: 'react',
       root: 'React',
-    },
-    'lodash': {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-        amd: 'lodash',
-      root: '_',
-    },
-    'lodash/fp': {
-      commonjs: 'lodash/fp',
-      commonjs2: 'lodash/fp',
-      amd: 'lodash/fp',
-      root: 'fp',
     },
     'moment': {
       commonjs: 'moment',
