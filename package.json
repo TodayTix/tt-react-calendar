@@ -13,7 +13,8 @@
     "dist:all": "npm run dist:modules && npm run dist:min",
     "dist": "webpack --env dist && postcss src/styles.css -o dist/styles.css",
     "dist:min": "webpack --env dist:min && POSTCSS_MIN=true postcss src/styles.css -o dist/styles.css",
-    "dist:modules": "rimraf ./dist-modules && postcss src/styles.css -o dist-modules/styles.css && BABEL_ENV='dist:modules' babel ./src --out-dir ./dist-modules"
+    "dist:modules": "rimraf ./dist-modules && postcss src/styles.css -o dist-modules/styles.css && babel ./src --out-dir ./dist-modules",
+    "prepublish": "npm run dist:all"
   },
   "keywords": [
     "calendar",
