@@ -53,6 +53,18 @@ Name | Type | Description
 `monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`.
 `renderDay` | function | A function that takes a moment object of a single day as a parameter and returns a React element. Defaults to `(day) => <div>{day.format('YYYY-MM-DD')}</div>`
 
+### Browser Support
+
+This is still a very young project, so it hasn't been actively tested in cross
+browser environments. That being said, given the technologies being used, it
+_should_ work in any browser that supports some form of flexbox.
+
+![Google Chrome](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/41.0.0/chrome/chrome_48x48.png) | ![Mozilla Firefox](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/41.0.0/firefox/firefox_48x48.png) | ![Microsoft Internet Explorer](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/41.0.0/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png) | ![Microsoft Edge](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/41.0.0/edge/edge_48x48.png) | ![Safari](https://cdnjs.cloudflare.com/ajax/libs/browser-logos/41.0.0/safari/safari_48x48.png)
+-----|-----|-----|-----|-----
+ Yes | Yes | 10+ | Yes | Yes
+
+[See caniuse.com for more details](http://caniuse.com/#feat=flexbox)
+
 ## Development
 
 Issues/PRs welcome! Linting/automated tests coming soon.
