@@ -25,6 +25,7 @@
   ],
   "author": "Jeremy Tice <jetpacmonkey@gmail.com>",
   "license": "MIT",
+  "repository": "TodayTix/tt-react-calendar",
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
