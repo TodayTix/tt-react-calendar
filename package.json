@@ -50,6 +50,7 @@
     "webpack": "^2.3.2"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "moment": ">= 2.10.7 < 3",
     "react": "15.x"
   }

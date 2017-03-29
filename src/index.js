@@ -53,6 +53,7 @@ export default function Calendar(props) {
     monthHeaderClassName,
     monthHeaderFormat,
     renderDay,
+    weekClassName,
   } = props;
 
   const firstDay = moment(firstRenderedDay);
@@ -85,6 +86,7 @@ export default function Calendar(props) {
             lastDay
           )}
           renderDay={renderDay}
+          weekClassName={weekClassName}
         />
       ))}
     </div>
@@ -105,6 +107,7 @@ Calendar.propTypes = {
 
   // Function that takes a moment instance and returns a single ReactElement.
   renderDay: PropTypes.func.isRequired,
+  weekClassName: PropTypes.string,
 };
 
 Calendar.defaultProps = {

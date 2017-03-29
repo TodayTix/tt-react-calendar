@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import fp from 'lodash/fp';
 import moment from 'moment';
+import classNames from 'classnames';
 
 import CalendarDayHeaders from './day-headers';
 
@@ -51,6 +52,7 @@ export default function CalendarMonth(props) {
     includeDayHeaders,
     lastDay,
     renderDay,
+    weekClassName,
   } = props;
 
   const dayWeeks = partitionByWeek(daysInRange(firstDay, lastDay));
@@ -68,7 +70,10 @@ export default function CalendarMonth(props) {
       <div>
         {
           _.map(dayWeeks, (days, week) => (
-            <div key={week} className="tt-cal-week">
+            <div
+              key={week}
+              className={classNames('tt-cal-week', weekClassName)}
+            >
               { numberOfWeeks === 1 ?
                 // We only have one week, so we need to pad the left with dummy
                 // day divs. If we had multiple rows, getting days into the
@@ -102,6 +107,7 @@ CalendarMonth.propTypes = {
   includeDayHeaders: PropTypes.bool.isRequired,
   lastDay: PropTypes.instanceOf(moment).isRequired,
   renderDay: PropTypes.func.isRequired,
+  weekClassName: PropTypes.string,
 };
 
 CalendarMonth.defaultProps = {

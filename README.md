@@ -35,6 +35,7 @@ function MyComponent() {
       monthClassName="calendar-month"
       monthHeaderFormat="MMMM YYYY"
       renderDay={renderDay}
+      weekClassName="calendar-week"
     />
   );
 }
@@ -52,6 +53,7 @@ Name | Type | Description
 `monthClassName` | string | Class name to add to each month element
 `monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`.
 `renderDay` | function | A function that takes a moment object of a single day as a parameter and returns a React element. Defaults to `(day) => <div>{day.format('YYYY-MM-DD')}</div>`
+`weekClassName` | string | Class name for the week element
 
 ### Browser Support
 
