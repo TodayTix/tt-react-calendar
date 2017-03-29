@@ -46,6 +46,7 @@ export default function CalendarMonth(props) {
   const {
     className,
     dayAbbrevs,
+    dayHeaderClassName,
     firstDay,
     headerClassName,
     headerFormat,
@@ -64,7 +65,10 @@ export default function CalendarMonth(props) {
         {firstDay.format(headerFormat)}
       </h3>
       { includeDayHeaders ?
-        <CalendarDayHeaders dayAbbrevs={dayAbbrevs} /> :
+        <CalendarDayHeaders
+          className={dayHeaderClassName}
+          dayAbbrevs={dayAbbrevs}
+        /> :
         null
       }
       <div>
@@ -101,6 +105,7 @@ export default function CalendarMonth(props) {
 CalendarMonth.propTypes = {
   className: PropTypes.string,
   dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dayHeaderClassName: PropTypes.string,
   firstDay: PropTypes.instanceOf(moment).isRequired,
   headerClassName: PropTypes.string,
   headerFormat: PropTypes.string.isRequired,

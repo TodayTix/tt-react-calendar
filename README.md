@@ -29,6 +29,7 @@ function MyComponent() {
     <Calendar
       className="calendar-container"
       dayAbbrevs={['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']}
+      dayHeaderClassName="calendar-day-header"
       dayHeaderStyle={Calendar.DayHeaderStyles.InFirstMonth}
       firstRenderedDay="2016-12-25"
       lastRenderedDay="2017-02-12"
@@ -47,6 +48,7 @@ Name | Type | Description
 -----|------|-------------
 `className` | string | Class name for the calendar's container element
 `dayAbbrevs` | Array.&lt;string&gt; | Array of day names, starting with Sunday. Defaults to `['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']`.
+`dayHeaderClassName` | string | Class name for the day header container element
 `dayHeaderStyle` | Enum | Determines where the day column headers are rendered. Can be one of `Calendar.DayHeaderStyles.InFirstMonth` (the default), `Calendar.DayHeaderStyles.AboveFirstMonth`, or `Calendar.DayHeaderStyles.InEveryMonth`
 `firstRenderedDay` | _varied_ | The first date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports.
 `lastRenderedDay` | _varied_ | The last date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports.

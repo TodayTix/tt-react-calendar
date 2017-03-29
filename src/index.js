@@ -46,6 +46,7 @@ export default function Calendar(props) {
   const {
     className,
     dayAbbrevs,
+    dayHeaderClassName,
     dayHeaderStyle,
     firstRenderedDay,
     lastRenderedDay,
@@ -63,13 +64,17 @@ export default function Calendar(props) {
   return (
     <div className={className}>
       { dayHeaderStyle === DayHeaderStyles.AboveFirstMonth ?
-        <CalendarDayHeaders dayAbbrevs={dayAbbrevs} /> :
+        <CalendarDayHeaders
+          className={dayHeaderClassName}
+          dayAbbrevs={dayAbbrevs}
+        /> :
         null
       }
       {months.map((firstOfMonth, idx) => (
         <CalendarMonth
           className={monthClassName}
           dayAbbrevs={dayAbbrevs}
+          dayHeaderClassName={dayHeaderClassName}
           firstDay={moment.max(
             firstOfMonth,
             firstDay
@@ -98,6 +103,7 @@ Calendar.propTypes = {
 
   // Array of 7 strings to use as column headers for days. Start with Sunday.
   dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dayHeaderClassName: PropTypes.string,
   dayHeaderStyle: PropTypes.oneOf(_.values(DayHeaderStyles)),
   firstRenderedDay: dayType.isRequired,
   lastRenderedDay: dayType.isRequired,
