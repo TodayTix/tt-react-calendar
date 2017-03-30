@@ -17,6 +17,17 @@
   text-align: center;
 }
 
+.tt-cal-headerInsideDay {
+  /* The month header element will need to be position: absolute in this case */
+  position: relative;
+}
+
+.tt-cal-inlineMonthHeader {
+  position: absolute;
+  right: 100%;
+  margin: 0;
+}
+
 .tt-cal-week {
   display: flex;
 
