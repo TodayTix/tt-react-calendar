@@ -103,29 +103,33 @@ export default function CalendarMonth(props) {
                 null
               }
               {
-                days.map((day) => (
-                  <div key={day.format('YYYYMMDD')} className="tt-cal-day">
-                    { (
-                        headerInsideDay && (
-                          // We're either the first day rendered, or
-                          // the first day of a new month.
-                          day.isSame(firstDay) ||
-                          day.date() === 1
-                        )
-                      ) ?
-                      <h3
-                        className={classNames(
-                          'tt-cal-inlineMonthHeader',
-                          headerClassName
-                        )}
-                      >
-                        {day.format(headerFormat)}
-                      </h3> :
-                      null
-                    }
-                    {renderDay(day)}
-                  </div>
-                ))
+                days.map((day) => {
+                  const shouldRenderHeader = (
+                    headerInsideDay && (
+                      // We're either the first day rendered, or
+                      // the first day of a new month.
+                      day.isSame(firstDay) ||
+                      day.date() === 1
+                    )
+                  );
+
+                  return (
+                    <div key={day.format('YYYYMMDD')} className="tt-cal-day">
+                      { shouldRenderHeader ?
+                        <h3
+                          className={classNames(
+                            'tt-cal-inlineMonthHeader',
+                            headerClassName
+                          )}
+                        >
+                          {day.format(headerFormat)}
+                        </h3> :
+                        null
+                      }
+                      {renderDay(day)}
+                    </div>
+                  );
+                })
               }
             </div>
           ))
