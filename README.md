@@ -50,19 +50,19 @@ And somewhere in your stylesheet build process...
 
 ### Properties
 
-Name | Type | Description
------|------|-------------
-`className` | string | Class name for the calendar's container element
-`compactMonths` | bool | A flag that combines all of the months into one continuous block of days, with the month header split out and positioned along the left edge of the container. This sets `position: absolute`, `right: 100%`, and `margin: 0` on the month header class, so override those properties in your CSS if you think you have better ideas.
-`dayAbbrevs` | Array.&lt;string&gt; | Array of day names, starting with Sunday. Defaults to `['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']`.
-`dayHeaderClassName` | string | Class name for the day header container element
-`dayHeaderStyle` | Enum | Determines where the day column headers are rendered. Can be one of `Calendar.DayHeaderStyles.InFirstMonth` (the default), `Calendar.DayHeaderStyles.AboveFirstMonth`, or `Calendar.DayHeaderStyles.InEveryMonth`
-`firstRenderedDay` | _varied_ | The first date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports.
-`lastRenderedDay` | _varied_ | The last date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports.
-`monthClassName` | string | Class name to add to each month element
-`monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`.
-`renderDay` | function | A function that takes a moment object of a single day as a parameter and returns a React element. Defaults to `(day) => <div>{day.format('YYYY-MM-DD')}</div>`
-`weekClassName` | string | Class name for the week element
+Name | Type | Description | Since Version
+-----|------|-------------|--------------
+`className` | string | Class name for the calendar's container element | 1.0.0
+`compactMonths` | bool | A flag that combines all of the months into one continuous block of days, with the month header split out and positioned along the left edge of the container. This sets `position: absolute`, `right: 100%`, and `margin: 0` on the month header class, so override those properties in your CSS if you think you have better ideas. | 1.3.0
+`dayAbbrevs` | Array.&lt;string&gt; | Array of day names, starting with Sunday. Defaults to `['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']`. | 1.0.0
+`dayHeaderClassName` | string | Class name for the day header container element | 1.2.0
+`dayHeaderStyle` | Enum | Determines where the day column headers are rendered. Can be one of `Calendar.DayHeaderStyles.InFirstMonth` (the default), `Calendar.DayHeaderStyles.AboveFirstMonth`, or `Calendar.DayHeaderStyles.InEveryMonth` | 1.0.0
+`firstRenderedDay` | _varied_ | The first date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports. | 1.0.0
+`lastRenderedDay` | _varied_ | The last date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports. | 1.0.0
+`monthClassName` | string | Class name to add to each month element | 1.0.0
+`monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`. | 1.0.0
+`renderDay` | function | A function that takes a moment object of a single day as a parameter and returns a React element. Defaults to `(day) => <div>{day.format('YYYY-MM-DD')}</div>` | 1.0.0
+`weekClassName` | string | Class name for the week element | 1.1.0
 
 ### Browser Support
 
