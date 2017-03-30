@@ -42,6 +42,12 @@ const daysInRange = _.memoize(
  */
 const partitionByWeek = _.memoize(fp.groupBy(fp.invoke('week')));
 
+/* NOTE(Jeremy):
+ * This is _usually_ a single month to be rendered. However, if the outer
+ * calendar component has the `compactMonths` flag set, then this gets
+ * `headerInsideDay`, and at that point should only be considered a collection
+ * of days, not limited to a single month.
+ */
 export default function CalendarMonth(props) {
   const {
     className,
@@ -50,6 +56,7 @@ export default function CalendarMonth(props) {
     firstDay,
     headerClassName,
     headerFormat,
+    headerInsideDay,
     includeDayHeaders,
     lastDay,
     renderDay,
@@ -60,10 +67,18 @@ export default function CalendarMonth(props) {
   const numberOfWeeks = _.size(dayWeeks);
 
   return (
-    <div className={className}>
-      <h3 className={headerClassName}>
-        {firstDay.format(headerFormat)}
-      </h3>
+    <div
+      className={classNames(
+        className,
+        { 'tt-cal-headerInsideDay': headerInsideDay }
+      )}
+    >
+      { headerInsideDay ?
+        null :
+        <h3 className={headerClassName}>
+          {firstDay.format(headerFormat)}
+        </h3>
+      }
       { includeDayHeaders ?
         <CalendarDayHeaders
           className={dayHeaderClassName}
@@ -90,6 +105,24 @@ export default function CalendarMonth(props) {
               {
                 days.map((day) => (
                   <div key={day.format('YYYYMMDD')} className="tt-cal-day">
+                    { (
+                        headerInsideDay && (
+                          // We're either the first day rendered, or
+                          // the first day of a new month.
+                          day.isSame(firstDay) ||
+                          day.date() === 1
+                        )
+                      ) ?
+                      <h3
+                        className={classNames(
+                          'tt-cal-inlineMonthHeader',
+                          headerClassName
+                        )}
+                      >
+                        {day.format(headerFormat)}
+                      </h3> :
+                      null
+                    }
                     {renderDay(day)}
                   </div>
                 ))
@@ -109,6 +142,7 @@ CalendarMonth.propTypes = {
   firstDay: PropTypes.instanceOf(moment).isRequired,
   headerClassName: PropTypes.string,
   headerFormat: PropTypes.string.isRequired,
+  headerInsideDay: PropTypes.bool.isRequired,
   includeDayHeaders: PropTypes.bool.isRequired,
   lastDay: PropTypes.instanceOf(moment).isRequired,
   renderDay: PropTypes.func.isRequired,
@@ -116,5 +150,6 @@ CalendarMonth.propTypes = {
 };
 
 CalendarMonth.defaultProps = {
+  headerInsideDay: false,
   includeDayHeaders: true,
 };

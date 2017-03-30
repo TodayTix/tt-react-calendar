@@ -53,6 +53,7 @@ And somewhere in your stylesheet build process...
 Name | Type | Description
 -----|------|-------------
 `className` | string | Class name for the calendar's container element
+`compactMonths` | bool | A flag that combines all of the months into one continuous block of days, with the month header split out and positioned along the left edge of the container. This sets `position: absolute`, `right: 100%`, and `margin: 0` on the month header class, so override those properties in your CSS if you think you have better ideas.
 `dayAbbrevs` | Array.&lt;string&gt; | Array of day names, starting with Sunday. Defaults to `['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']`.
 `dayHeaderClassName` | string | Class name for the day header container element
 `dayHeaderStyle` | Enum | Determines where the day column headers are rendered. Can be one of `Calendar.DayHeaderStyles.InFirstMonth` (the default), `Calendar.DayHeaderStyles.AboveFirstMonth`, or `Calendar.DayHeaderStyles.InEveryMonth`

@@ -45,6 +45,7 @@ const DayHeaderStyles = {
 export default function Calendar(props) {
   const {
     className,
+    compactMonths,
     dayAbbrevs,
     dayHeaderClassName,
     dayHeaderStyle,
@@ -59,7 +60,10 @@ export default function Calendar(props) {
 
   const firstDay = moment(firstRenderedDay);
   const lastDay = moment(lastRenderedDay);
-  const months = getMonthsInRange(firstDay, lastDay);
+  const months = (compactMonths ?
+    [firstDay] :
+    getMonthsInRange(firstDay, lastDay)
+  );
 
   return (
     <div className={className}>
@@ -81,15 +85,19 @@ export default function Calendar(props) {
           )}
           headerClassName={monthHeaderClassName}
           headerFormat={monthHeaderFormat}
+          headerInsideDay={compactMonths}
           includeDayHeaders={
             dayHeaderStyle === DayHeaderStyles.InEveryMonth ||
             (dayHeaderStyle === DayHeaderStyles.InFirstMonth && idx === 0)
           }
           key={firstOfMonth.format('YYYYMM')}
-          lastDay={moment.min(
-            firstOfMonth.clone().endOf('month'),
-            lastDay
-          )}
+          lastDay={compactMonths ?
+            lastDay :
+            moment.min(
+              firstOfMonth.clone().endOf('month'),
+              lastDay
+            )
+          }
           renderDay={renderDay}
           weekClassName={weekClassName}
         />
@@ -100,6 +108,7 @@ export default function Calendar(props) {
 
 Calendar.propTypes = {
   className: PropTypes.string,
+  compactMonths: PropTypes.bool.isRequired,
 
   // Array of 7 strings to use as column headers for days. Start with Sunday.
   dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -117,6 +126,7 @@ Calendar.propTypes = {
 };
 
 Calendar.defaultProps = {
+  compactMonths: false,
   dayAbbrevs: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
   dayHeaderStyle: DayHeaderStyles.InFirstMonth,
   monthHeaderFormat: 'MMMM YYYY',
