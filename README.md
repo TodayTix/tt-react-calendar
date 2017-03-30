@@ -42,6 +42,12 @@ function MyComponent() {
 }
 ```
 
+And somewhere in your stylesheet build process...
+
+```css
+@import 'tt-react-calendar/dist/styles.css';
+```
+
 ### Properties
 
 Name | Type | Description
