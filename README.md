@@ -35,6 +35,7 @@ function MyComponent() {
       lastRenderedDay="2017-02-12"
       monthClassName="calendar-month"
       monthHeaderFormat="MMMM YYYY"
+      monthHeaderClassName="calendar-month-header"
       renderDay={renderDay}
       weekClassName="calendar-week"
     />
@@ -61,6 +62,7 @@ Name | Type | Description | Since Version
 `lastRenderedDay` | _varied_ | The last date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports. | 1.0.0
 `monthClassName` | string | Class name to add to each month element | 1.0.0
 `monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`. | 1.0.0
+`monthHeaderClassName` | string | Class name to add to each month header h3 element | 1.0.0
 `renderDay` | function | A function that takes a moment object of a single day as a parameter and returns a React element. Defaults to `(day) => <div>{day.format('YYYY-MM-DD')}</div>` | 1.0.0
 `weekClassName` | string | Class name for the week element | 1.1.0
 
