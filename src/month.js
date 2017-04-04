@@ -141,21 +141,21 @@ export default function CalendarMonth(props) {
 }
 
 CalendarMonth.propTypes = {
-  className: PropTypes.string,
-  dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  dayHeaderClassName: PropTypes.string,
-  firstDay: PropTypes.instanceOf(moment).isRequired,
-  headerClassName: PropTypes.string,
-  headerFormat: PropTypes.string.isRequired,
-  headerInsideDay: PropTypes.bool.isRequired,
-  includeDayHeaders: PropTypes.bool.isRequired,
-  lastDay: PropTypes.instanceOf(moment).isRequired,
+	className: PropTypes.string,
+	dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
+	dayHeaderClassName: PropTypes.string,
+	firstDay: PropTypes.instanceOf(moment).isRequired,
+	headerClassName: PropTypes.string,
+	headerFormat: PropTypes.string.isRequired,
+	headerInsideDay: PropTypes.bool.isRequired,
+	includeDayHeaders: PropTypes.bool.isRequired,
+	lastDay: PropTypes.instanceOf(moment).isRequired,
 	renderDay: PropTypes.func.isRequired,
 	renderHeader: PropTypes.func.isRequired,
-  weekClassName: PropTypes.string,
+	weekClassName: PropTypes.string,
 };
 
 CalendarMonth.defaultProps = {
-  headerInsideDay: false,
-  includeDayHeaders: true,
+	headerInsideDay: false,
+	includeDayHeaders: true,
 };
