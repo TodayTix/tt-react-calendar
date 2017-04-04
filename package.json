@@ -1,6 +1,6 @@
 {
   "name": "tt-react-calendar",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A React calendar component with as few frills as humanly possible",
   "main": "dist/",
   "module": "dist-modules/",
