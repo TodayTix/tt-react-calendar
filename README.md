@@ -67,6 +67,7 @@ Name | Type | Description | Since Version
 `dayHeaderClassName` | string | Class name for the day header container element | 1.2.0
 `dayHeaderStyle` | Enum | Determines where the day column headers are rendered. Can be one of `Calendar.DayHeaderStyles.InFirstMonth` (the default), `Calendar.DayHeaderStyles.AboveFirstMonth`, or `Calendar.DayHeaderStyles.InEveryMonth` | 1.0.0
 `firstRenderedDay` | _varied_ | The first date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports. | 1.0.0
+`gutterWidth` | string | CSS value to use as the gutter between columns | 1.5.0
 `lastRenderedDay` | _varied_ | The last date that will be rendered as part of the calendar. Can be any type that [moment's constructor](http://momentjs.com/docs/#/parsing/) supports. | 1.0.0
 `monthClassName` | string | Class name to add to each month element | 1.0.0
 `monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`. | 1.0.0
