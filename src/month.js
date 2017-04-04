@@ -77,7 +77,7 @@ export default function CalendarMonth(props) {
       { headerInsideDay ?
         null :
         <h3 className={headerClassName}>
-          {renderHeader(headerFormat)}
+          {renderHeader(firstDay, headerFormat)}
         </h3>
       }
       { includeDayHeaders ?
@@ -123,7 +123,7 @@ export default function CalendarMonth(props) {
                             headerClassName
                           )}
                         >
-                          {renderHeader(headerFormat)}
+                          {renderHeader(day, headerFormat)}
                         </h3> :
                         null
                       }
