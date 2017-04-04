@@ -85,7 +85,7 @@ export default function Calendar(props) {
           )}
           headerClassName={monthHeaderClassName}
           headerInsideDay={compactMonths}
-					headerFormat={monthHeaderFormat}
+					 headerFormat={monthHeaderFormat}
           includeDayHeaders={
             dayHeaderStyle === DayHeaderStyles.InEveryMonth ||
             (dayHeaderStyle === DayHeaderStyles.InFirstMonth && idx === 0)
@@ -119,7 +119,7 @@ Calendar.propTypes = {
   lastRenderedDay: dayType.isRequired,
   monthClassName: PropTypes.string,
   monthHeaderClassName: PropTypes.string,
-	monthHeaderFormat: PropTypes.string,
+	 monthHeaderFormat: PropTypes.string,
 
   // Function that takes a moment instance and returns a single ReactElement.
   renderDay: PropTypes.func.isRequired,
