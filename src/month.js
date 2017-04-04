@@ -60,7 +60,7 @@ export default function CalendarMonth(props) {
     includeDayHeaders,
     lastDay,
     renderDay,
-		renderHeader,
+  renderHeader,
     weekClassName,
   } = props;
 

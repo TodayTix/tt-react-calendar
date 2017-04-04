@@ -54,7 +54,7 @@ export default function Calendar(props) {
     monthClassName,
     monthHeaderClassName,
     renderDay,
-		renderMonthHeader,
+  renderMonthHeader,
     weekClassName,
   } = props;
 
@@ -79,7 +79,7 @@ export default function Calendar(props) {
           className={monthClassName}
           dayAbbrevs={dayAbbrevs}
           dayHeaderClassName={dayHeaderClassName}
-          firstDay={moment.max(
+          firstDay={moment.max(z
             firstOfMonth,
             firstDay
           )}
@@ -98,7 +98,7 @@ export default function Calendar(props) {
             )
           }
           renderDay={renderDay}
-					renderHeader={renderMonthHeader}
+          renderHeader={renderMonthHeader}
           weekClassName={weekClassName}
         />
       ))}
@@ -121,7 +121,7 @@ Calendar.propTypes = {
 
   // Function that takes a moment instance and returns a single ReactElement.
   renderDay: PropTypes.func.isRequired,
-	renderMonthHeader: PropTypes.func.isRequired,
+  renderMonthHeader: PropTypes.func.isRequired,
   weekClassName: PropTypes.string,
 };
 
@@ -130,7 +130,7 @@ Calendar.defaultProps = {
   dayAbbrevs: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
   dayHeaderStyle: DayHeaderStyles.InFirstMonth,
   renderDay: (day) => <div>{day.format('YYYY-MM-DD')}</div>,
-	renderMonthHeader: (month) => day.format('MMMM YYYY'),
+  renderMonthHeader: (month) => day.format('MMMM YYYY'),
 };
 
 Calendar.DayHeaderStyles = DayHeaderStyles;
