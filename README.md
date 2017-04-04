@@ -24,6 +24,13 @@ function renderDay(day) {
   return <div className="day">{day.format('dd')}</div>
 }
 
+function renderMonthHeader(firstDay, format) {
+  // Don't render month headers for 2016, for some reason.
+  if (firstDay.year() === 2017) {
+    return firstDay.format(format);
+  }
+}
+
 function MyComponent() {
   return (
     <Calendar
@@ -37,6 +44,7 @@ function MyComponent() {
       monthHeaderFormat="MMMM YYYY"
       monthHeaderClassName="calendar-month-header"
       renderDay={renderDay}
+      renderMonthHeader={renderMonthHeader}
       weekClassName="calendar-week"
     />
   );
@@ -64,6 +72,7 @@ Name | Type | Description | Since Version
 `monthHeaderFormat` | string | Format of the month header text. See [moment.format](http://momentjs.com/docs/#/displaying/format/) for the available options. Defaults to `'MMMM YYYY'`. | 1.0.0
 `monthHeaderClassName` | string | Class name to add to each month header h3 element | 1.0.0
 `renderDay` | function | A function that takes a moment object of a single day as a parameter and returns a React element. Defaults to `(day) => <div>{day.format('YYYY-MM-DD')}</div>` | 1.0.0
+`renderMonthHeader` | function | A function that takes a moment object and the value of the `monthHeaderFormat` prop, and returns a React element. Defaults to `(firstDay, format) => firstDay.format(format)` | 1.4.0
 `weekClassName` | string | Class name for the week element | 1.1.0
 
 ### Browser Support
