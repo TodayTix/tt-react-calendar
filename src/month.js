@@ -42,6 +42,29 @@ const daysInRange = _.memoize(
  */
 const partitionByWeek = _.memoize(fp.groupBy(fp.invoke('week')));
 
+/**
+ * Generates an array of dummy day elements to fill up space and make alignment
+ * work correctly. Gutters get weird when we don't have a consistent number of
+ * elements in every row, so these dummy elements help us get around that.
+ * The fact that they're needed is making me wish CSS Grid Layout had better
+ * support. Old iOS makes me sad.
+ * @param  {number}   num                    How many dummy elements
+ * @param  {string}   options.gutterWidth    CSS length
+ * @param  {?Boolean} options.firstHasMargin
+ *   Should the first dummy element have a margin-left? Defaults to false.
+ * @return {Array.<ReactElement>}
+ */
+const dummyDays = (num, { gutterWidth, firstHasMargin = false }) =>
+  _.times(num, (n) => (
+    <div
+      key={n}
+      className="tt-cal-dummyDay"
+      style={{
+        marginLeft: (firstHasMargin || n !== 0 ? gutterWidth : null)
+      }}
+    />
+  ));
+
 /* NOTE(Jeremy):
  * This is _usually_ a single month to be rendered. However, if the outer
  * calendar component has the `compactMonths` flag set, then this gets
@@ -54,6 +77,7 @@ export default function CalendarMonth(props) {
     dayAbbrevs,
     dayHeaderClassName,
     firstDay,
+    gutterWidth,
     headerClassName,
     headerFormat,
     headerInsideDay,
@@ -84,6 +108,7 @@ export default function CalendarMonth(props) {
         <CalendarDayHeaders
           className={dayHeaderClassName}
           dayAbbrevs={dayAbbrevs}
+          gutterWidth={gutterWidth}
         /> :
         null
       }
@@ -94,15 +119,13 @@ export default function CalendarMonth(props) {
               key={week}
               className={classNames('tt-cal-week', weekClassName)}
             >
-              { numberOfWeeks === 1 ?
-                // We only have one week, so we need to pad the left with dummy
-                // day divs. If we had multiple rows, getting days into the
-                // correct column would simply be handled with alignment in CSS.
-                _.times(days[0].weekday(), (n) => (
-                  <div key={n} className="tt-cal-dummyDay" />
-                )) :
+              {/* Left dummy days */}
+              { days[0].isSame(firstDay) ?
+                dummyDays(days[0].weekday(), { gutterWidth }) :
                 null
               }
+
+              {/* Actual days */}
               {
                 days.map((day) => {
                   const shouldRenderHeader = (
@@ -115,7 +138,13 @@ export default function CalendarMonth(props) {
                   );
 
                   return (
-                    <div key={day.format('YYYYMMDD')} className="tt-cal-day">
+                    <div
+                      key={day.format('YYYYMMDD')}
+                      className="tt-cal-day"
+                      style={{
+                        marginLeft: (day.weekday() === 0 ? null : gutterWidth)
+                      }}
+                    >
                       { shouldRenderHeader ?
                         <h3
                           className={classNames(
@@ -132,6 +161,15 @@ export default function CalendarMonth(props) {
                   );
                 })
               }
+
+              {/* Right dummy days */}
+              { parseInt(week, 10) === lastDay.week() ?
+                dummyDays(7 - (lastDay.weekday() + 1), {
+                  gutterWidth,
+                  firstHasMargin: true
+                }) :
+                null
+              }
             </div>
           ))
         }
@@ -145,6 +183,7 @@ CalendarMonth.propTypes = {
 	dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
 	dayHeaderClassName: PropTypes.string,
 	firstDay: PropTypes.instanceOf(moment).isRequired,
+  gutterWidth: PropTypes.string,
 	headerClassName: PropTypes.string,
 	headerFormat: PropTypes.string.isRequired,
 	headerInsideDay: PropTypes.bool.isRequired,
