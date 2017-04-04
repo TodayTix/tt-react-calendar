@@ -53,6 +53,7 @@ export default function Calendar(props) {
     lastRenderedDay,
     monthClassName,
     monthHeaderClassName,
+    monthHeaderFormat,
     renderDay,
     renderMonthHeader,
     weekClassName,
