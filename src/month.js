@@ -60,6 +60,7 @@ export default function CalendarMonth(props) {
     includeDayHeaders,
     lastDay,
     renderDay,
+  	renderHeader,
     weekClassName,
   } = props;
 
@@ -76,7 +77,7 @@ export default function CalendarMonth(props) {
       { headerInsideDay ?
         null :
         <h3 className={headerClassName}>
-          {firstDay.format(headerFormat)}
+          {renderHeader(firstDay, headerFormat)}
         </h3>
       }
       { includeDayHeaders ?
@@ -122,7 +123,7 @@ export default function CalendarMonth(props) {
                             headerClassName
                           )}
                         >
-                          {day.format(headerFormat)}
+                          {renderHeader(day, headerFormat)}
                         </h3> :
                         null
                       }
@@ -140,20 +141,21 @@ export default function CalendarMonth(props) {
 }
 
 CalendarMonth.propTypes = {
-  className: PropTypes.string,
-  dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
-  dayHeaderClassName: PropTypes.string,
-  firstDay: PropTypes.instanceOf(moment).isRequired,
-  headerClassName: PropTypes.string,
-  headerFormat: PropTypes.string.isRequired,
-  headerInsideDay: PropTypes.bool.isRequired,
-  includeDayHeaders: PropTypes.bool.isRequired,
-  lastDay: PropTypes.instanceOf(moment).isRequired,
-  renderDay: PropTypes.func.isRequired,
-  weekClassName: PropTypes.string,
+	className: PropTypes.string,
+	dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
+	dayHeaderClassName: PropTypes.string,
+	firstDay: PropTypes.instanceOf(moment).isRequired,
+	headerClassName: PropTypes.string,
+	headerFormat: PropTypes.string.isRequired,
+	headerInsideDay: PropTypes.bool.isRequired,
+	includeDayHeaders: PropTypes.bool.isRequired,
+	lastDay: PropTypes.instanceOf(moment).isRequired,
+	renderDay: PropTypes.func.isRequired,
+	renderHeader: PropTypes.func.isRequired,
+	weekClassName: PropTypes.string,
 };
 
 CalendarMonth.defaultProps = {
-  headerInsideDay: false,
-  includeDayHeaders: true,
+	headerInsideDay: false,
+	includeDayHeaders: true,
 };
