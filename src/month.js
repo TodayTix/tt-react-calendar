@@ -60,6 +60,7 @@ export default function CalendarMonth(props) {
     includeDayHeaders,
     lastDay,
     renderDay,
+		renderHeader,
     weekClassName,
   } = props;
 
@@ -76,7 +77,7 @@ export default function CalendarMonth(props) {
       { headerInsideDay ?
         null :
         <h3 className={headerClassName}>
-          {firstDay.format(headerFormat)}
+          {renderHeader(headerFormat)}
         </h3>
       }
       { includeDayHeaders ?
@@ -122,7 +123,7 @@ export default function CalendarMonth(props) {
                             headerClassName
                           )}
                         >
-                          {day.format(headerFormat)}
+                          {renderHeader(headerFormat)}
                         </h3> :
                         null
                       }
@@ -150,6 +151,7 @@ CalendarMonth.propTypes = {
   includeDayHeaders: PropTypes.bool.isRequired,
   lastDay: PropTypes.instanceOf(moment).isRequired,
   renderDay: PropTypes.func.isRequired,
+  renderHeader: PropTypes.func.isRequired,
   weekClassName: PropTypes.string,
 };
 

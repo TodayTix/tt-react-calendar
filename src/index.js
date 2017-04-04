@@ -53,8 +53,8 @@ export default function Calendar(props) {
     lastRenderedDay,
     monthClassName,
     monthHeaderClassName,
-    monthHeaderFormat,
     renderDay,
+		renderMonthHeader,
     weekClassName,
   } = props;
 
@@ -84,7 +84,6 @@ export default function Calendar(props) {
             firstDay
           )}
           headerClassName={monthHeaderClassName}
-          headerFormat={monthHeaderFormat}
           headerInsideDay={compactMonths}
           includeDayHeaders={
             dayHeaderStyle === DayHeaderStyles.InEveryMonth ||
@@ -99,6 +98,7 @@ export default function Calendar(props) {
             )
           }
           renderDay={renderDay}
+					renderHeader={renderMonthHeader}
           weekClassName={weekClassName}
         />
       ))}
@@ -118,10 +118,10 @@ Calendar.propTypes = {
   lastRenderedDay: dayType.isRequired,
   monthClassName: PropTypes.string,
   monthHeaderClassName: PropTypes.string,
-  monthHeaderFormat: PropTypes.string,
 
   // Function that takes a moment instance and returns a single ReactElement.
   renderDay: PropTypes.func.isRequired,
+	renderMonthHeader: PropTypes.func.isRequired,
   weekClassName: PropTypes.string,
 };
 
@@ -129,8 +129,8 @@ Calendar.defaultProps = {
   compactMonths: false,
   dayAbbrevs: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
   dayHeaderStyle: DayHeaderStyles.InFirstMonth,
-  monthHeaderFormat: 'MMMM YYYY',
   renderDay: (day) => <div>{day.format('YYYY-MM-DD')}</div>,
+	renderMonthHeader: (month) => day.format('MMMM YYYY'),
 };
 
 Calendar.DayHeaderStyles = DayHeaderStyles;
