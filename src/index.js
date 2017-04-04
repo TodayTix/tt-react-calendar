@@ -54,7 +54,7 @@ export default function Calendar(props) {
     monthClassName,
     monthHeaderClassName,
     renderDay,
-  renderMonthHeader,
+  	renderMonthHeader,
     weekClassName,
   } = props;
 
@@ -98,7 +98,7 @@ export default function Calendar(props) {
             )
           }
           renderDay={renderDay}
-          renderHeader={renderMonthHeader}
+					renderHeader={renderMonthHeader}
           weekClassName={weekClassName}
         />
       ))}

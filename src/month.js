@@ -150,8 +150,8 @@ CalendarMonth.propTypes = {
   headerInsideDay: PropTypes.bool.isRequired,
   includeDayHeaders: PropTypes.bool.isRequired,
   lastDay: PropTypes.instanceOf(moment).isRequired,
-  renderDay: PropTypes.func.isRequired,
-  renderHeader: PropTypes.func.isRequired,
+	renderDay: PropTypes.func.isRequired,
+	renderHeader: PropTypes.func.isRequired,
   weekClassName: PropTypes.string,
 };
 
