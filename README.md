@@ -1,6 +1,7 @@
 # TT React Calendar
 
 [![NPM Version][npm-image]][npm-url]
+[![Build Status][circle-image]][circle-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
 ## Description
@@ -90,7 +91,31 @@ _should_ work in any browser that supports some form of flexbox.
 
 ## Development
 
-Issues/PRs welcome! Linting/automated tests coming soon.
+Issues/PRs welcome! Automated tests coming soon.
+
+### Set up dev environment
+
+tt-react-calendar uses [yarn](https://yarnpkg.com) for its package management
+during development. If you don't already have yarn installed on your machine,
+follow the [installation instructions here](https://yarnpkg.com/en/docs/install).
+Once yarn is installed, you can simply run
+
+```sh
+yarn
+```
+
+to install all development dependencies.
+
+### Contributing
+
+Please make sure your code passes our linter.
+
+```sh
+yarn run lint
+```
+
+It's not scary! Just a few code style rules to keep devs from shooting themselves
+in the foot.
 
 ## Meta
 
@@ -104,3 +129,5 @@ _[Jeremy Tice](https://github.com/jetpacmonkey)_
 [npm-image]: https://img.shields.io/npm/v/tt-react-calendar.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/tt-react-calendar
 [npm-downloads]: https://img.shields.io/npm/dm/tt-react-calendar.svg?style=flat-square
+[circle-image]: https://img.shields.io/circleci/project/github/TodayTix/tt-react-calendar.svg?style=flat-square
+[circle-url]: https://circleci.com/gh/TodayTix/tt-react-calendar

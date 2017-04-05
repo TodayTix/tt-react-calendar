@@ -1,0 +1,19 @@
+# See https://circleci.com/docs/yarn/ for the source of yarn setup
+
+machine:
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  node:
+    version: 6.9.4
+
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    # TODO(Jeremy): Add tests
+    # - yarn test
+    - yarn run lint
