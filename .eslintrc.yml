@@ -1,0 +1,72 @@
+parserOptions:
+  ecmaVersion: "2015"
+  sourceType: "module"
+  ecmaFeatures:
+    jsx: true
+extends:
+  - "eslint:recommended"
+  - "plugin:react/recommended"
+plugins:
+  - "react"
+env:
+  browser: true
+rules:
+  arrow-body-style: ["error", "as-needed"]
+  comma-dangle: ["error", "always-multiline"]
+  eqeqeq: ["error", "smart"]
+  indent: ["error", 2]
+  no-confusing-arrow:
+    - "error"
+    - allowParens: true
+  no-eval: "error"
+  no-extra-bind: "error"
+  no-implied-eval: "error"
+  no-mixed-requires: "error"
+  no-multi-spaces: "error"
+  no-useless-concat: "error"
+  no-useless-return: "error"
+  no-var: "error"
+  one-var: ["error", "never"]
+  prefer-const: "error"
+  prefer-spread: "error"
+  radix: "error"
+  require-await: "error"
+  spaced-comment:
+    - "error"
+    - "always"
+    - block:
+        balanced: true
+        exceptions: ["*"]
+  valid-jsdoc:
+    - "error"
+    - prefer:
+        arg: "param"
+        argument: "param"
+        returns: "return"
+      preferType:
+        Boolean: "boolean"
+        Number: "number"
+        object: "Object"
+        String: "string"
+      requireReturn: false
+      requireReturnType: true
+      requireParamDescription: false
+      requireReturnDescription: false
+  yoda: "error"
+  react/no-string-refs: 0
+  react/jsx-filename-extension: 0
+  react/require-extension: 0
+  react/jsx-boolean-value:
+    - 2
+    - "always"
+  react/jsx-no-bind:
+    - 2
+    - allowArrowFunctions: true
+  react/sort-prop-types:
+    - 2
+    - callbacksLast: false
+      ignoreCase: true
+      requiredFirst: false
+  react/prefer-es6-class: "error"
+  react/prefer-stateless-function: "error"
+  react/display-name: 0
