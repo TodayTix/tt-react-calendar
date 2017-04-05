@@ -22,7 +22,7 @@ export default function CalendarDayHeaders(props) {
           key={weekday % 7}
           className="tt-cal-columnHeader"
           style={{
-            marginLeft: (idx === 0 ? null : gutterWidth)
+            marginLeft: (idx === 0 ? null : gutterWidth),
           }}
         >
           {dayAbbrevs[weekday % 7]}

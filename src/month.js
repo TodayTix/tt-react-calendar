@@ -50,7 +50,7 @@ const partitionByWeek = _.memoize(fp.groupBy(fp.invoke('week')));
  * support. Old iOS makes me sad.
  * @param  {number}   num                    How many dummy elements
  * @param  {string}   options.gutterWidth    CSS length
- * @param  {?Boolean} options.firstHasMargin
+ * @param  {?boolean} options.firstHasMargin
  *   Should the first dummy element have a margin-left? Defaults to false.
  * @return {Array.<ReactElement>}
  */
@@ -60,7 +60,7 @@ const dummyDays = (num, { gutterWidth, firstHasMargin = false }) =>
       key={n}
       className="tt-cal-dummyDay"
       style={{
-        marginLeft: (firstHasMargin || n !== 0 ? gutterWidth : null)
+        marginLeft: (firstHasMargin || n !== 0 ? gutterWidth : null),
       }}
     />
   ));
@@ -84,12 +84,11 @@ export default function CalendarMonth(props) {
     includeDayHeaders,
     lastDay,
     renderDay,
-  	renderHeader,
+    renderHeader,
     weekClassName,
   } = props;
 
   const dayWeeks = partitionByWeek(daysInRange(firstDay, lastDay));
-  const numberOfWeeks = _.size(dayWeeks);
 
   return (
     <div
@@ -142,7 +141,7 @@ export default function CalendarMonth(props) {
                       key={day.format('YYYYMMDD')}
                       className="tt-cal-day"
                       style={{
-                        marginLeft: (day.weekday() === 0 ? null : gutterWidth)
+                        marginLeft: (day.weekday() === 0 ? null : gutterWidth),
                       }}
                     >
                       { shouldRenderHeader ?
@@ -166,7 +165,7 @@ export default function CalendarMonth(props) {
               { parseInt(week, 10) === lastDay.week() ?
                 dummyDays(7 - (lastDay.weekday() + 1), {
                   gutterWidth,
-                  firstHasMargin: true
+                  firstHasMargin: true,
                 }) :
                 null
               }
@@ -179,22 +178,22 @@ export default function CalendarMonth(props) {
 }
 
 CalendarMonth.propTypes = {
-	className: PropTypes.string,
-	dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
-	dayHeaderClassName: PropTypes.string,
-	firstDay: PropTypes.instanceOf(moment).isRequired,
+  className: PropTypes.string,
+  dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dayHeaderClassName: PropTypes.string,
+  firstDay: PropTypes.instanceOf(moment).isRequired,
   gutterWidth: PropTypes.string,
-	headerClassName: PropTypes.string,
-	headerFormat: PropTypes.string.isRequired,
-	headerInsideDay: PropTypes.bool.isRequired,
-	includeDayHeaders: PropTypes.bool.isRequired,
-	lastDay: PropTypes.instanceOf(moment).isRequired,
-	renderDay: PropTypes.func.isRequired,
-	renderHeader: PropTypes.func.isRequired,
-	weekClassName: PropTypes.string,
+  headerClassName: PropTypes.string,
+  headerFormat: PropTypes.string.isRequired,
+  headerInsideDay: PropTypes.bool.isRequired,
+  includeDayHeaders: PropTypes.bool.isRequired,
+  lastDay: PropTypes.instanceOf(moment).isRequired,
+  renderDay: PropTypes.func.isRequired,
+  renderHeader: PropTypes.func.isRequired,
+  weekClassName: PropTypes.string,
 };
 
 CalendarMonth.defaultProps = {
-	headerInsideDay: false,
-	includeDayHeaders: true,
+  headerInsideDay: false,
+  includeDayHeaders: true,
 };
