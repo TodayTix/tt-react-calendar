@@ -124,7 +124,7 @@ Calendar.propTypes = {
   lastRenderedDay: dayType.isRequired,
   monthClassName: PropTypes.string,
   monthHeaderClassName: PropTypes.string,
-	monthHeaderFormat: PropTypes.string,
+  monthHeaderFormat: PropTypes.string,
 
   // Function that takes a moment instance and returns a single ReactElement.
   renderDay: PropTypes.func.isRequired,
@@ -136,7 +136,7 @@ Calendar.defaultProps = {
   compactMonths: false,
   dayAbbrevs: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa'],
   dayHeaderStyle: DayHeaderStyles.InFirstMonth,
-	monthHeaderFormat: 'MMMM YYYY',
+  monthHeaderFormat: 'MMMM YYYY',
   renderDay: (day) => <div>{day.format('YYYY-MM-DD')}</div>,
   renderMonthHeader: (day, format) => day.format(format),
 };
