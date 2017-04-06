@@ -3,17 +3,14 @@ import moment from 'moment';
 import _ from 'lodash';
 import classNames from 'classnames';
 
-// A bit of a roundabout way to get what the first day of the week is, according
-// to the locale used by moment. This works because .weekday is locale-specific,
-// and .day always starts with Sunday as 0.
-const firstWeekday = moment().weekday(0).day();
-
 export default function CalendarDayHeaders(props) {
   const {
     className,
     dayAbbrevs,
     gutterWidth,
   } = props;
+
+  const firstWeekday = moment.localeData().firstDayOfWeek();
 
   return (
     <div className={classNames('tt-cal-dayHeaders', className)}>

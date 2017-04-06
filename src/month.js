@@ -21,8 +21,10 @@ const daysInRange = _.memoize(
     return arr;
   },
   // memoization key
+  // NOTE(Jeremy): The "e" is the locale-specific day of the week. If that
+  // changes, it should invalidate the cache.
   (firstDay, lastDay) =>
-    `${firstDay.format('YYYYMMDD')}-${lastDay.format('YYYYMMDD')}`
+    `${firstDay.format('eYYYYMMDD')}-${lastDay.format('eYYYYMMDD')}`
 );
 
 /**
@@ -89,6 +91,7 @@ export default function CalendarMonth(props) {
   } = props;
 
   const dayWeeks = partitionByWeek(daysInRange(firstDay, lastDay));
+  const firstWeekday = moment.localeData().firstDayOfWeek();
 
   return (
     <div
@@ -163,7 +166,7 @@ export default function CalendarMonth(props) {
 
               {/* Right dummy days */}
               { parseInt(week, 10) === lastDay.week() ?
-                dummyDays(7 - (lastDay.weekday() + 1), {
+                dummyDays(7 - (lastDay.weekday() + 1) - firstWeekday, {
                   gutterWidth,
                   firstHasMargin: true,
                 }) :
