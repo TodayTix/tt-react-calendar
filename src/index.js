@@ -9,6 +9,17 @@ import CalendarDayHeaders from './day-headers';
 import CalendarMonth from './month';
 
 /**
+ * Turns a moment instance into a serialized string that's unique for a month
+ * and the object's locale's first day of the week. This ensures that the range
+ * of months only regenerates if the locale changes, or different months are
+ * passed in for the start and end dates, maximizing efficiency for re-renders.
+ * @param  {moment} day
+ * @return {string}
+ */
+const monthKey = (day) =>
+  `${day.localeData().firstDayOfWeek()}${day.format('YYYYMM')}`;
+
+/**
  * Takes two inclusive endpoints and returns an array of moment objects for the
  * first of each month between those endpoints.
  * @param  {moment} firstDay
@@ -32,10 +43,7 @@ const getMonthsInRange = _.memoize(
     )
   ),
   // memoize key function
-  // NOTE(Jeremy): The "e" is the locale-specific day of the week. If that
-  // changes, it should invalidate the cache.
-  (firstDay, lastDay) =>
-    `${firstDay.format('eYYYYMM')}-${lastDay.format('eYYYYMM')}`
+  (firstDay, lastDay) => `${monthKey(firstDay)}-${monthKey(lastDay)}`
 );
 
 const DayHeaderStyles = {
