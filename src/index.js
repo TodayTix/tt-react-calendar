@@ -32,8 +32,10 @@ const getMonthsInRange = _.memoize(
     )
   ),
   // memoize key function
+  // NOTE(Jeremy): The "e" is the locale-specific day of the week. If that
+  // changes, it should invalidate the cache.
   (firstDay, lastDay) =>
-    `${firstDay.format('YYYYMM')}-${lastDay.format('YYYYMM')}`
+    `${firstDay.format('eYYYYMM')}-${lastDay.format('eYYYYMM')}`
 );
 
 const DayHeaderStyles = {
