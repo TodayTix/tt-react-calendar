@@ -13,6 +13,8 @@ dependencies:
     - ~/.cache/yarn
 
 test:
+  pre:
+    - mkdir -p $CIRCLE_TEST_REPORTS/reports
   override:
-    - yarn test
+    - yarn test -- --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/ava.xml
     - yarn run lint
