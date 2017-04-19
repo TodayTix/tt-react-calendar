@@ -4,5 +4,23 @@
     "transform-class-properties",
     "transform-object-rest-spread",
     "lodash"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "react",
+        "es2015"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        [
+          "babel-plugin-espower",
+          {
+            "embedAst": true
+          }
+        ]
+      ]
+    }
+  }
 }
