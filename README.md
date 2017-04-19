@@ -91,7 +91,7 @@ _should_ work in any browser that supports some form of flexbox.
 
 ## Development
 
-Issues/PRs welcome! Automated tests coming soon.
+Issues/PRs welcome!
 
 ### Set up dev environment
 
@@ -108,14 +108,15 @@ to install all development dependencies.
 
 ### Contributing
 
-Please make sure your code passes our linter.
+Please make sure your code passes our tests and linter.
 
 ```sh
+yarn test
 yarn run lint
 ```
 
 It's not scary! Just a few code style rules to keep devs from shooting themselves
-in the foot.
+in the foot, and tests to make sure we didn't accidentally break anything.
 
 ## Meta
 
