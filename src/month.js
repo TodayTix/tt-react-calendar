@@ -91,7 +91,6 @@ export default function CalendarMonth(props) {
   } = props;
 
   const dayWeeks = partitionByWeek(daysInRange(firstDay, lastDay));
-  const firstWeekday = moment.localeData().firstDayOfWeek();
 
   return (
     <div
@@ -166,7 +165,7 @@ export default function CalendarMonth(props) {
 
               {/* Right dummy days */}
               { parseInt(week, 10) === lastDay.week() ?
-                dummyDays(7 - (lastDay.weekday() + 1) - firstWeekday, {
+                dummyDays(7 - (lastDay.weekday() + 1), {
                   gutterWidth,
                   firstHasMargin: true,
                 }) :
