@@ -63,7 +63,7 @@ test.serial('properly aligns by the week in en', t => {
   t.is(weekWrappers.length, 3);
 });
 
-test.serial('has the correct number of dummy days inserted in en-gb', t => {
+test.serial('has the correct number of leading dummy days in en-gb', t => {
   moment.locale('en-gb');
 
   // Go from Friday April 14 to Sunday April 23.
@@ -77,7 +77,21 @@ test.serial('has the correct number of dummy days inserted in en-gb', t => {
   t.is(dummyDays.length, 4);
 });
 
-test.serial('has the correct number of dummy days inserted in en', t => {
+test.serial('has the correct number of trailing dummy days in en-gb', t => {
+  moment.locale('en-gb');
+
+  // Go from Wednesday April 25 to Thursday May 25.
+  const wrapper = render(<TTReactCalendar
+    firstRenderedDay="2017-04-26"
+    lastRenderedDay="2017-05-25"
+  />);
+  const lastWeek = wrapper.find('.tt-cal-week').last();
+  const dummyDays = lastWeek.find('.tt-cal-dummyDay');
+
+  t.is(dummyDays.length, 3);
+});
+
+test.serial('has the correct number of leading dummy days in en', t => {
   moment.locale('en');
 
   // Go from Friday April 14 to Sunday April 23.
@@ -89,4 +103,18 @@ test.serial('has the correct number of dummy days inserted in en', t => {
   const dummyDays = firstWeek.find('.tt-cal-dummyDay');
 
   t.is(dummyDays.length, 5);
+});
+
+test.serial('has the correct number of trailing dummy days in en', t => {
+  moment.locale('en');
+
+  // Go from Wednesday April 25 to Thursday May 25.
+  const wrapper = render(<TTReactCalendar
+    firstRenderedDay="2017-04-26"
+    lastRenderedDay="2017-05-25"
+  />);
+  const lastWeek = wrapper.find('.tt-cal-week').last();
+  const dummyDays = lastWeek.find('.tt-cal-dummyDay');
+
+  t.is(dummyDays.length, 2);
 });
