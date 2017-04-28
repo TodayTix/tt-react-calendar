@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const path = require('path');
 const compact = require('lodash/compact');
 const webpack = require('webpack');

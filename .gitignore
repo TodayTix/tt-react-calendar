@@ -1,3 +1,4 @@
 node_modules
 dist
 dist-modules
+.nyc_output
