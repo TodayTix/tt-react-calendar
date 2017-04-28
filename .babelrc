@@ -21,6 +21,23 @@
           }
         ]
       ]
+    },
+    "test:coverage": {
+      "presets": [
+        "react",
+        "es2015"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        [
+          "babel-plugin-espower",
+          {
+            "embedAst": true
+          }
+        ],
+        "istanbul"
+      ]
     }
   }
 }

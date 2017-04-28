@@ -3,6 +3,8 @@
 machine:
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+    COVERALLS_REPO_TOKEN: hNalmUHJN5pol8yfYF5plY5wFcFNL0DNw
+    COVERALLS_SERVICE_JOB_ID: $CIRCLE_BUILD_NUM
   node:
     version: 6.9.4
 
@@ -16,5 +18,8 @@ test:
   pre:
     - mkdir -p $CIRCLE_TEST_REPORTS/reports
   override:
-    - yarn test -- --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/ava.xml
+    - yarn run test:coverage -- --tap | tap-xunit > $CIRCLE_TEST_REPORTS/reports/ava.xml
     - yarn run lint
+  post:
+    - yarn run coveralls
+    - yarn run coverage -- --reporter=html --report-dir=$CIRCLE_ARTIFACTS/coverage
