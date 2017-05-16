@@ -57,6 +57,7 @@ test('has 7 children in every week across multiple months', t => {
 test('includes margins on all but first day header', t => {
   const wrapper = shallow(<DayHeaders
     dayAbbrevs={abbrevs}
+    firstWeekday={0}
     gutterWidth="23px"
   />);
 
