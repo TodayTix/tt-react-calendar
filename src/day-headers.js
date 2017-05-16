@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import moment from 'moment';
 import _ from 'lodash';
 import classNames from 'classnames';
 
@@ -7,10 +6,9 @@ export default function CalendarDayHeaders(props) {
   const {
     className,
     dayAbbrevs,
+    firstWeekday,
     gutterWidth,
   } = props;
-
-  const firstWeekday = moment.localeData().firstDayOfWeek();
 
   return (
     <div className={classNames('tt-cal-dayHeaders', className)}>
@@ -32,5 +30,6 @@ export default function CalendarDayHeaders(props) {
 CalendarDayHeaders.propTypes = {
   className: PropTypes.string,
   dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  firstWeekday: PropTypes.number.isRequired,
   gutterWidth: PropTypes.string,
 };

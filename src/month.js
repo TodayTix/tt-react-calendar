@@ -79,6 +79,7 @@ export default function CalendarMonth(props) {
     dayAbbrevs,
     dayHeaderClassName,
     firstDay,
+    firstWeekday,
     gutterWidth,
     headerClassName,
     headerFormat,
@@ -109,6 +110,7 @@ export default function CalendarMonth(props) {
         <CalendarDayHeaders
           className={dayHeaderClassName}
           dayAbbrevs={dayAbbrevs}
+          firstWeekday={firstWeekday}
           gutterWidth={gutterWidth}
         /> :
         null
@@ -184,6 +186,7 @@ CalendarMonth.propTypes = {
   dayAbbrevs: PropTypes.arrayOf(PropTypes.string).isRequired,
   dayHeaderClassName: PropTypes.string,
   firstDay: PropTypes.instanceOf(moment).isRequired,
+  firstWeekday: PropTypes.number,
   gutterWidth: PropTypes.string,
   headerClassName: PropTypes.string,
   headerFormat: PropTypes.string.isRequired,

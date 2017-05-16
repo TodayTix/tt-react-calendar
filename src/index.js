@@ -76,6 +76,7 @@ export default function Calendar(props) {
     [firstDay] :
     getMonthsInRange(firstDay, lastDay)
   );
+  const firstWeekday = firstDay.localeData().firstDayOfWeek();
 
   return (
     <div className={className}>
@@ -83,6 +84,7 @@ export default function Calendar(props) {
         <CalendarDayHeaders
           className={dayHeaderClassName}
           dayAbbrevs={dayAbbrevs}
+          firstWeekday={firstWeekday}
           gutterWidth={gutterWidth}
         /> :
         null
@@ -96,6 +98,7 @@ export default function Calendar(props) {
             firstOfMonth,
             firstDay
           )}
+          firstWeekday={firstWeekday}
           gutterWidth={gutterWidth}
           headerClassName={monthHeaderClassName}
           headerInsideDay={compactMonths}
