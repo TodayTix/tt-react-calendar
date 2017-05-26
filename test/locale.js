@@ -23,7 +23,7 @@ test('respects the firstWeekday prop for Monday', t => {
   t.is(firstHeader.text(), abbrevs[1]);
 });
 
-test('respects the firstWeekday prop for Monday', t => {
+test('respects the firstWeekday prop for Sunday', t => {
   const wrapper = shallow(<DayHeaders dayAbbrevs={abbrevs} firstWeekday={0} />);
   const firstHeader = wrapper.find('.tt-cal-columnHeader').first();
 
