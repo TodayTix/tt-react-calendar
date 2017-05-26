@@ -42,7 +42,11 @@ const daysInRange = _.memoize(
  * @param  {Array.<moment>} days Array of moment day objects to partition
  * @return {Array.<Array.<moment>>}
  */
-const partitionByWeek = _.memoize(fp.groupBy(fp.invoke('week')));
+const partitionByWeek = _.memoize(_.flow(
+  fp.groupBy(fp.invoke('week')),
+  fp.values,
+  fp.sortBy(fp.head)
+));
 
 /**
  * Generates an array of dummy day elements to fill up space and make alignment
@@ -117,9 +121,9 @@ export default function CalendarMonth(props) {
       }
       <div>
         {
-          _.map(dayWeeks, (days, week) => (
+          _.map(dayWeeks, (days) => (
             <div
-              key={week}
+              key={days[0].week()}
               className={classNames('tt-cal-week', weekClassName)}
             >
               {/* Left dummy days */}
@@ -166,7 +170,7 @@ export default function CalendarMonth(props) {
               }
 
               {/* Right dummy days */}
-              { parseInt(week, 10) === lastDay.week() ?
+              { days[0].week() === lastDay.week() ?
                 dummyDays(7 - (lastDay.weekday() + 1), {
                   gutterWidth,
                   firstHasMargin: true,

@@ -2,6 +2,7 @@ import test from 'ava';
 import React from 'react';
 import { render, shallow } from 'enzyme';
 import $ from 'cheerio';
+import moment from 'moment';
 
 import TTReactCalendar from '../src';
 import DayHeaders from '../src/day-headers';
@@ -72,3 +73,18 @@ test('includes margins on all but first day header', t => {
     t.is(header.prop('style').marginLeft, expected);
   });
 });
+
+test('orders weeks correctly with weeks spanning years', t => {
+  // Background: Dec 31, 2017 is in week 1 of 2018 (in US locale), which put it
+  // at the top of the month instead of the bottom.
+  const wrapper = render(<TTReactCalendar
+    firstRenderedDay={moment('2017-12-24').locale('en')}
+    lastRenderedDay={moment('2017-12-31').locale('en')}
+    renderDay={(day) => day.format('YYYYMMDD')}
+  />);
+
+  const firstWeek = wrapper.find('.tt-cal-week').first();
+  const firstDay = firstWeek.find('.tt-cal-day').first();
+
+  t.is(firstDay.text(), '20171224');
+})
