@@ -24,7 +24,7 @@ const daysInRange = _.memoize(
   // NOTE(Jeremy): The "e" is the locale-specific day of the week. If that
   // changes, it should invalidate the cache.
   (firstDay, lastDay) =>
-    `${firstDay.format('eYYYYMMDD')}-${lastDay.format('eYYYYMMDD')}`
+    `${firstDay.format('eYYYYMMDDZZ')}-${lastDay.format('eYYYYMMDDZZ')}`
 );
 
 /**

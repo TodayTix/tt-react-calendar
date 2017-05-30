@@ -87,4 +87,28 @@ test('orders weeks correctly with weeks spanning years', t => {
   const firstDay = firstWeek.find('.tt-cal-day').first();
 
   t.is(firstDay.text(), '20171224');
-})
+});
+
+test('inserts dummy days when day tz offset is less than the local tz', t => {
+  const localOffset = moment().utcOffset();
+  const firstDay = moment('2017-05-30').startOf('day').utcOffset(localOffset - 60, true);
+  const lastDay = firstDay.clone().add(20, 'days');
+
+  // Do a render that we won't use, first, to make sure that we're testing
+  // against over-eager memoization.
+  render(<TTReactCalendar
+    compactMonths={true}
+    firstRenderedDay={firstDay.clone().utcOffset(localOffset, true)}
+    lastRenderedDay={lastDay.clone().utcOffset(localOffset, true)}
+  />);
+  const wrapper = render(<TTReactCalendar
+    compactMonths={true}
+    firstRenderedDay={firstDay}
+    lastRenderedDay={firstDay.clone().add(20, 'days')}
+  />);
+
+  const firstWeek = wrapper.find('.tt-cal-week').first();
+  const dummyDays = firstWeek.find('.tt-cal-dummyDay');
+
+  t.is(dummyDays.length, 2);
+});
