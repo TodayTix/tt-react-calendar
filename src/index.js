@@ -17,7 +17,7 @@ import CalendarMonth from './month';
  * @return {string}
  */
 const monthKey = (day) =>
-  `${day.localeData().firstDayOfWeek()}${day.format('YYYYMM')}`;
+  `${day.localeData().firstDayOfWeek()}${day.format('YYYYMMZZ')}`;
 
 /**
  * Takes two inclusive endpoints and returns an array of moment objects for the
