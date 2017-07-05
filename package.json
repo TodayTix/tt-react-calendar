@@ -9,18 +9,19 @@
     "dist-modules/"
   ],
   "scripts": {
-    "test": "NODE_ENV=test ava",
-    "test:coverage": "NODE_ENV=test:coverage nyc -s ava",
     "coverage": "nyc report",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "dist:all": "npm run dist:modules && npm run dist:min",
     "dist": "webpack --env dist && postcss src/styles.css -o dist/styles.css",
+    "dist:all": "npm run dist:modules && npm run dist:min",
     "dist:min": "webpack --env dist:min && POSTCSS_MIN=true postcss src/styles.css -o dist/styles.css",
     "dist:modules": "rimraf ./dist-modules && postcss src/styles.css -o dist-modules/styles.css && babel ./src --out-dir ./dist-modules",
     "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint src",
     "lint:css": "stylelint src/**/*.css",
-    "prepublish": "npm run dist:all"
+    "lint:js": "eslint src",
+    "prepublish": "npm run dist:all",
+    "start": "webpack-dev-server --hot --inline --config ./demo/webpack.config.js",
+    "test": "NODE_ENV=test ava",
+    "test:coverage": "NODE_ENV=test:coverage nyc -s ava"
   },
   "ava": {
     "require": [
@@ -76,15 +77,17 @@
     "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
     "sinon": "^2.1.0",
+    "style-loader": "^0.18.2",
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
     "tap-xunit": "^1.7.0",
-    "webpack": "^2.3.2"
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "moment": ">= 2.10.7 < 3",
     "react": "15.x",
-    "react-dom": "15.x"
+    "react-dom": "^15.6.1"
   }
 }
