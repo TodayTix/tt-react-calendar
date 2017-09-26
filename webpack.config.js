@@ -8,22 +8,23 @@ const CleanPlugin = require('clean-webpack-plugin');
 const REPO_ROOT = __dirname;
 const ASSETS_PATH = path.resolve(REPO_ROOT, 'dist');
 
-module.exports = (env) => ({
+module.exports = env => ({
   entry: './src/index.js',
   output: {
     path: ASSETS_PATH,
-    filename: 'index.js',
+    filename:
+      env === 'dist:min' ? 'tt-react-calendar.min.js' : 'tt-react-calendar.js',
     library: 'tt-react-calendar',
     libraryTarget: 'umd',
   },
   externals: {
-    'react': {
+    react: {
       commonjs: 'react',
       commonjs2: 'react',
       amd: 'react',
       root: 'React',
     },
-    'moment': {
+    moment: {
       commonjs: 'moment',
       commonjs2: 'moment',
       amd: 'moment',
@@ -31,12 +32,12 @@ module.exports = (env) => ({
     },
   },
   module: {
-    rules: [
-      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-    ],
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }],
   },
   plugins: compact([
-    new CleanPlugin([ASSETS_PATH], { root: REPO_ROOT }),
-    (env === 'dist:min' ? new webpack.optimize.UglifyJsPlugin() : null),
+    process.env.CLEAN_BUILD
+      ? new CleanPlugin([ASSETS_PATH], { root: REPO_ROOT })
+      : null,
+    env === 'dist:min' ? new webpack.optimize.UglifyJsPlugin() : null,
   ]),
-})
+});

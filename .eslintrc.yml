@@ -26,6 +26,7 @@ rules:
   no-useless-concat: "error"
   no-useless-return: "error"
   no-var: "error"
+  object-curly-spacing: ["error", "always"]
   one-var: ["error", "never"]
   prefer-const: "error"
   prefer-spread: "error"
