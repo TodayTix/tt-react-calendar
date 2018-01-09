@@ -5,3 +5,4 @@ dist-modules
 .npm-debug.log
 .DS_Store
 example/static/
+!example/dist
