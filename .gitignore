@@ -3,3 +3,4 @@ dist
 dist-modules
 .nyc_output
 .npm-debug.log
+.DS_Store

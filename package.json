@@ -9,6 +9,7 @@
     "dist-modules/"
   ],
   "scripts": {
+    "build:example": "webpack --config ./example/webpack.prod.js",
     "coverage": "nyc report",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "dist": "webpack --env dist && postcss src/styles.css -o dist/styles.css",
@@ -19,7 +20,7 @@
     "lint:css": "stylelint src/**/*.css",
     "lint:js": "eslint src",
     "prepublish": "npm run dist:all",
-    "start": "webpack-dev-server --hot --inline --config ./demo/webpack.config.js",
+    "start": "webpack-dev-server --hot --inline --config ./example/webpack.config.js",
     "test": "NODE_ENV=test ava",
     "test:coverage": "NODE_ENV=test:coverage nyc -s ava"
   },

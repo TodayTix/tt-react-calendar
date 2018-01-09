@@ -25,7 +25,7 @@ function renderMonthHeader(firstDay, format) {
 
 export default class App extends Component {
   state = {
-    startDate: moment().format('YYYY-MM-DD'),
+    startDate: moment().subtract(30, 'days').format('YYYY-MM-DD'),
     endDate: moment().add(60, 'days').format('YYYY-MM-DD'),
   }
 

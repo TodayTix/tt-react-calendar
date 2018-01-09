@@ -15,11 +15,11 @@ module.exports = {
       'babel-polyfill',
       'webpack-dev-server/client?http://0.0.0.0:3000',
       'webpack/hot/only-dev-server',
-      join(root, 'demo/src/index.jsx'),
+      join(root, 'example/src/index.jsx'),
     ],
   },
   output: {
-    path: join(root, 'demo/static'),
+    path: join(root, 'example/static'),
     filename: 'bundle.js',
     publicPath: '/static',
   },
@@ -35,7 +35,7 @@ module.exports = {
         ],
         context: root,
         output: {
-          path: join(root, 'demo/static'),
+          path: join(root, 'example/static'),
         },
       },
     }),
@@ -45,7 +45,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          join(root, 'demo/src'),
+          join(root, 'example/src'),
         ],
         loader: 'babel-loader',
       },
@@ -93,7 +93,7 @@ module.exports = {
     quiet: true,
     publicPath: '/static/',
     port: 3000,
-    contentBase: './demo',
+    contentBase: './example',
     hot: true,
     stats: {
       colors: true,
