@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * To be used in PropTypes - anything that can be passed to moment.

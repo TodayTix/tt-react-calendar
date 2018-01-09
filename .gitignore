@@ -2,3 +2,7 @@ node_modules
 dist
 dist-modules
 .nyc_output
+.npm-debug.log
+.DS_Store
+example/static/
+!example/dist
