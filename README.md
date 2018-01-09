@@ -11,6 +11,9 @@ A no-frills calendar widget that lets you bring your own styling. This component
 takes a start date, an end date, and a `renderDay` function, and then gets out
 of the way.
 
+## Example
+View a working example [here](https://todaytix.github.io/tt-react-calendar/example/dist/).
+
 ## Installation
 
 ```sh
