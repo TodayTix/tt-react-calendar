@@ -29,6 +29,24 @@ const daysInRange = _.memoize(
 );
 
 /**
+ * Takes a moment object and returns the week num for week of year.
+ * Date and time is weird so sometimes the last few days of December
+ * are considered the first week of the year. In those cases we return
+ * 53 instead of week 1. This helps when sorting weeks in December by
+ * week number. See https://github.com/moment/moment/issues/4019 for
+ * more information.
+ * @param {Object} momentDate
+ * @return {Integer} week of year
+ */
+const getAdjustedWeekNum = (momentDate) => {
+  const week = momentDate.week();
+  if (week === 1 && momentDate.month() === 11) {
+    return 53;
+  }
+  return week;
+}
+
+/**
  * Takes an array of days, and breaks them into an array of arrays, grouped by
  * week.
  * @example
@@ -44,7 +62,7 @@ const daysInRange = _.memoize(
  * @return {Array.<Array.<moment>>}
  */
 const partitionByWeek = _.memoize(_.flow(
-  fp.groupBy(fp.invoke('week')),
+  fp.groupBy(getAdjustedWeekNum),
   fp.values,
   fp.sortBy(fp.head)
 ));
@@ -122,9 +140,9 @@ export default function CalendarMonth(props) {
       }
       <div>
         {
-          _.map(dayWeeks, (days) => (
+          _.map(dayWeeks, (days, week) => (
             <div
-              key={days[0].week()}
+              key={week}
               className={classNames('tt-cal-week', weekClassName)}
             >
               {/* Left dummy days */}
@@ -171,7 +189,7 @@ export default function CalendarMonth(props) {
               }
 
               {/* Right dummy days */}
-              { days[0].week() === lastDay.week() ?
+              { getAdjustedWeekNum(days[0]) === getAdjustedWeekNum(lastDay) ?
                 dummyDays(7 - (lastDay.weekday() + 1), {
                   gutterWidth,
                   firstHasMargin: true,
