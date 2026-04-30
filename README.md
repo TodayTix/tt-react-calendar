@@ -1,9 +1,7 @@
 # TT React Calendar
 
 [![NPM Version][npm-image]][npm-url]
-[![Build Status][circle-image]][circle-url]
 [![Downloads Stats][npm-downloads]][npm-url]
-[![Coverage Status][coverage-image]][coverage-url]
 
 ## Description
 
@@ -134,7 +132,3 @@ _[Jeremy Tice](https://github.com/jetpacmonkey)_
 [npm-image]: https://img.shields.io/npm/v/tt-react-calendar.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/tt-react-calendar
 [npm-downloads]: https://img.shields.io/npm/dm/tt-react-calendar.svg?style=flat-square
-[circle-image]: https://img.shields.io/circleci/project/github/TodayTix/tt-react-calendar.svg?style=flat-square
-[circle-url]: https://circleci.com/gh/TodayTix/tt-react-calendar
-[coverage-image]: https://coveralls.io/repos/github/TodayTix/tt-react-calendar/badge.svg?branch=master
-[coverage-url]: https://coveralls.io/github/TodayTix/tt-react-calendar?branch=master
