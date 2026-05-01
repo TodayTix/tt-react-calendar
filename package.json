@@ -71,7 +71,7 @@
     "stylelint": "^7.10.1",
     "stylelint-config-standard": "^16.0.0",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
     "classnames": "^2.2.5",
